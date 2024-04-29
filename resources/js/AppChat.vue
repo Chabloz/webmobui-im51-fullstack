@@ -9,7 +9,7 @@
 
 <template>
   <h1>Hello from Vue</h1>
-  <q-input v-model="text" label="Standard" />
+  <q-input v-model="text" label="Username" />
   <p>{{  text }}</p>
   <div>
     <h2>Online Users</h2>
