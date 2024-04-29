@@ -8,6 +8,13 @@ class UserController extends Controller
 {
     public function online()
     {
-        return 'test';
+        // return json response
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'User1',
+                'User2',
+            ]
+        ]);
     }
 }
