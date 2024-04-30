@@ -5,7 +5,7 @@ import { quasar } from '@quasar/vite-plugin';
 
 export default defineConfig({
     plugins: [
-        laravel(['resources/js/app.js']),
+        laravel(['resources/js/appChat.js', 'resources/js/appLogin.js']),
         vue({
             template: {
                 transformAssetUrls: {
