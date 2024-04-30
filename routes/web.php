@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 /* WEB ROUTES */
-Route::get('/', [App\Http\Controllers\ChatController::class, 'login']);
-Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat']);
+Route::get('/', [App\Http\Controllers\UserController::class, 'loginForm']);
+Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
 
 /* API ROUTES (example) */
-Route::get('/api/user/online', [App\Http\Controllers\ApiUserController::class, 'online']);
+Route::prefix('api')->group(function () {
+
+  Route::get('/user/online', [App\Http\Controllers\ApiUserController::class, 'online']);
+
+});

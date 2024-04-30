@@ -1,5 +1,6 @@
 <script setup>
   import { ref } from 'vue';
+  import { csrfToken } from '../bootstrap.js';
 
   const name = defineModel('name');
   const password = defineModel('password');
@@ -24,6 +25,8 @@
     @reset="reset"
     autocomplete="off"
   >
+    <input type="hidden" name="_token" :value="csrfToken">
+
     <q-input
       filled
       v-model="name"
@@ -36,11 +39,12 @@
 
     <q-input
       v-model="password"
+      name="password"
       filled
       :type="isPwd ? 'password' : 'text'"
       hint="Your password"
       lazy-rules="ondemand"
-      :rules="[ val => val && val.length > 7 || 'Password required']"
+      :rules="[ val => val && val.length > 1 || 'Password required']"
     >
       <template v-slot:append>
         <q-icon
