@@ -1,6 +1,5 @@
 <script setup>
-  import { is } from 'quasar';
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
   const name = defineModel('name');
   const password = defineModel('password');
@@ -25,10 +24,11 @@ import { ref } from 'vue';
     <div class="row full-width justify-center">
       <q-form
         action="/login"
+        method="post"
         @submit="submit"
         @reset="reset"
         autocomplete="off"
-        class="q-gutter-md col-md-3 col-xs-12"
+        class="q-gutter-md col-md-3 col-sm-5 col-xs-12"
       >
         <q-input
           filled
