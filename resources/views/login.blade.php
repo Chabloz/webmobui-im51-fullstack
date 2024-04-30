@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IM Chat</title>
-    @vite(['resources/js/appLogin.js'])
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
-</html>
+@extends('layouts.vue')
+
+@section('title', 'IM Chat - Login')
+
+@section('app')
+  @vite(['resources/js/appLogin.js'])
+@endsection

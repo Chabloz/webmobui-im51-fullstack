@@ -1,24 +1,13 @@
 <script setup>
-  import { useFetch } from './composables/fetch';
+  import { useFetchApi } from './composables/fetchApi.js';
 
-  const { data: users, error, fetchData } = useFetch('/api/chat/user/online');
-  fetchData();
+  // const { data: users, error, fetchData } = useFetchApi('user/online');
+  // fetchData();
 
-  const text = defineModel();
 </script>
 
 <template>
-  <h1>Hello from Vue</h1>
-  <q-input v-model="text" label="Username" />
-  <p>{{  text }}</p>
-  <div>
-    <h2>Online Users</h2>
-    <ul>
-      <li v-for="user in users">
-        {{ user }}
-      </li>
-    </ul>
-  </div>
+  <h1>Chat</h1>
 </template>
 
 <style scoped>
