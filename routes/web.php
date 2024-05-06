@@ -1,18 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ApiUserController;
+use App\Http\Controllers\ApiMessageController;
 
 /* WEB ROUTES */
-Route::get('/', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login-form');
-Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
-Route::get('/eduid', [App\Http\Controllers\UserController::class, 'eduId']);
-Route::get('/login-eduid', [App\Http\Controllers\UserController::class, 'loginEduId']);
+Route::get('/', [UserController::class, 'loginForm'])->name('login-form');
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/eduid', [UserController::class, 'eduId']);
+Route::get('/login-eduid', [UserController::class, 'loginEduId']);
 
-Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
+// Authenticated routes, with login-form for the login
+Route::middleware(['auth'])->group(function () {
+  Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
+  Route::get('/logout', [UserController::class, 'logout']);
+});
+
 
 /* API ROUTES (example) */
-Route::prefix('api')->group(function () {
+Route::prefix('api')->middleware(['auth'])->group(function () {
 
-  Route::get('/user/online', [App\Http\Controllers\ApiUserController::class, 'online']);
-
+  Route::get('/user/online', [ApiUserController::class, 'online']);
+  Route::post('/message', [ApiMessageController::class, 'create']);
 });

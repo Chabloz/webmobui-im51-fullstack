@@ -11,6 +11,9 @@ class UserController extends Controller
 
   public function loginForm()
   {
+    if (Auth::check()) {
+      return redirect()->intended('chat');
+    }
     return view('login-form');
   }
 
@@ -57,6 +60,12 @@ class UserController extends Controller
     $request->session()->regenerate();
 
     return redirect()->route('chat');
+  }
+
+  public function logout()
+  {
+    Auth::logout();
+    return redirect()->route('login-form');
   }
 
 
