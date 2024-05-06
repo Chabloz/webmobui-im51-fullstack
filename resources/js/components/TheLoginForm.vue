@@ -90,7 +90,7 @@
 
     <div>
       <p>Or login with Edu-id</p>
-      <a href="/eduidy">
+      <a href="/eduid">
         <q-btn color="primary" icon="login" label="Edu-id" />
       </a>
     </div>
