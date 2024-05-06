@@ -1,8 +1,22 @@
 <script setup>
   import { ref } from 'vue';
   import { csrfToken } from '../bootstrap.js';
+  import { patterns } from 'quasar';
+  const { testPattern } = patterns;
+
+  const props = defineProps({
+    error: {
+      type: String,
+      default: ''
+    },
+    name: {
+      type: String,
+      default: ''
+    }
+  });
 
   const name = defineModel('name');
+  name.value = props.name;
   const password = defineModel('password');
   const isPwd = ref(true);
 
@@ -15,6 +29,12 @@
     password.value = '';
     isPwd.value = true;
   }
+
+  const nameRules = [
+    val => val && val.length > 1 || 'Username or email required',
+    val => val.match(/^[a-z]+$/i) || testPattern.email(val) || 'Wrong username or email format'
+  ];
+
 </script>
 
 <template>
@@ -29,13 +49,18 @@
 
     <q-input
       filled
-      v-model="name"
+      v-model.trim="name"
       name="name"
-      label="Username"
-      hint="Your username"
+      label="Username or email"
+      hint="Your username or email address"
       lazy-rules="ondemand"
-      :rules="[ val => val && val.match(/^[a-z]+$/i) && val.length > 1 || 'Alphabetic only, at least 2']"
-    />
+      :rules="nameRules"
+      :error="error != ''"
+    >
+      <template v-slot:error>
+        Wrong credentials
+      </template>
+    </q-input>
 
     <q-input
       v-model="password"
@@ -44,7 +69,7 @@
       :type="isPwd ? 'password' : 'text'"
       hint="Your password"
       lazy-rules="ondemand"
-      :rules="[ val => val && val.length > 1 || 'Password required']"
+      :rules="[ val => !!val || 'Password required']"
     >
       <template v-slot:append>
         <q-icon
@@ -56,7 +81,7 @@
     </q-input>
 
     <div>
-      <q-btn label="Submit" type="submit" color="primary"/>
+      <q-btn label="Sign in" type="submit" color="primary"/>
       <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
     </div>
   </q-form>

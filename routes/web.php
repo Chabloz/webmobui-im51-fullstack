@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\UserController::class, 'loginForm']);
 Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
 
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat']);
+
 /* API ROUTES (example) */
 Route::prefix('api')->group(function () {
 
