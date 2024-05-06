@@ -13,6 +13,10 @@ class UserController extends Controller
     return view('login-form');
   }
 
+  public function eduId() {
+    return redirect()->away('https://chabloz.eu/aai/?dev');
+  }
+
   public function login(Request $request)
   {
     $isEmail = strpos($request->input('name'), '@');
@@ -34,6 +38,10 @@ class UserController extends Controller
     return back()
       ->with('error', 'Login failed')
       ->onlyInput('name');
+  }
+
+  public function loginEduId(Request $request) {
+    dd($request->input('token'));
   }
 
 

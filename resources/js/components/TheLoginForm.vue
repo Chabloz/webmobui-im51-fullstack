@@ -1,4 +1,5 @@
 <script setup>
+  // https://static.eduid.ch/eduid.ch/images/logo.svg
   import { ref } from 'vue';
   import { csrfToken } from '../bootstrap.js';
   import { patterns } from 'quasar';
@@ -83,6 +84,15 @@
     <div>
       <q-btn label="Sign in" type="submit" color="primary"/>
       <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+    </div>
+
+    <q-separator />
+
+    <div>
+      <p>Or login with Edu-id</p>
+      <a href="/eduidy">
+        <q-btn color="primary" icon="login" label="Edu-id" />
+      </a>
     </div>
   </q-form>
 </template>
