@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 /* WEB ROUTES */
-Route::get('/', [App\Http\Controllers\UserController::class, 'loginForm']);
+Route::get('/', [App\Http\Controllers\UserController::class, 'loginForm'])->name('login-form');
 Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
 Route::get('/eduid', [App\Http\Controllers\UserController::class, 'eduId']);
 Route::get('/login-eduid', [App\Http\Controllers\UserController::class, 'loginEduId']);
 
-Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat']);
+Route::get('/chat', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
 
 /* API ROUTES (example) */
 Route::prefix('api')->group(function () {

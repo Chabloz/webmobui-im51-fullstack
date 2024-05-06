@@ -13,7 +13,7 @@
       @if (session('error'))
         <the-login-form
           class="q-gutter-md col-md-3 col-sm-5 col-xs-12"
-          error="Wrong credentials"
+          error="{{ session('error') }}"
           name="{{ old('name') }}"
         />
       @else

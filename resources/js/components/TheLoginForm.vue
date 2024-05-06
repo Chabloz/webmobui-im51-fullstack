@@ -48,6 +48,10 @@
   >
     <input type="hidden" name="_token" :value="csrfToken">
 
+    <q-banner v-if="error" class="text-white bg-red">
+      {{ error }}
+    </q-banner>
+
     <q-input
       filled
       v-model.trim="name"
@@ -56,11 +60,7 @@
       hint="Your username or email address"
       lazy-rules="ondemand"
       :rules="nameRules"
-      :error="error != ''"
     >
-      <template v-slot:error>
-        Wrong credentials
-      </template>
     </q-input>
 
     <q-input
@@ -89,7 +89,7 @@
     <q-separator />
 
     <div>
-      <p>Or login with Edu-id</p>
+      <p class="text-subtitle">Or sign in with Edu-id</p>
       <a href="/eduid">
         <q-btn color="primary" icon="login" label="Edu-id" />
       </a>
