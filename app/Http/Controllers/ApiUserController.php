@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class ApiUserController extends Controller
 {
 
-  public function online()
+  public function online() : JsonResponse
   {
-    // return json response
-    return response()->json([
-      'status' => 'success',
-      'data' => [
-        'User1',
-        'User2',
-      ]
-    ]);
+      return response()->json([
+        'status' => 'success',
+        'data' => [
+            'User1',
+            'User2',
+        ]
+      ]);
   }
 }

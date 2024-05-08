@@ -24,4 +24,5 @@ Route::prefix('api')->middleware(['auth'])->group(function () {
 
   Route::get('/user/online', [ApiUserController::class, 'online']);
   Route::post('/message', [ApiMessageController::class, 'create']);
+  Route::get('/message', [ApiMessageController::class, 'get']);
 });

@@ -1,10 +1,26 @@
 <script setup>
+import { onUnmounted, ref, watch, nextTick } from 'vue';
+
 import { useFetchApi } from './composables/fetchApi.js';
 import TheChatHeader from './components/TheChatHeader.vue';
 import TheChatForm from './components/TheChatForm.vue';
+import BaseChatMsg from './components/BaseChatMsg.vue';
 
-// const { data: users, error, fetchData } = useFetchApi('user/online');
-// fetchData();
+const { data: messages, fetchData: getNewMessage } = useFetchApi('message');
+
+const allMsg = ref([]);
+
+const getMsgInterval = setInterval(getNewMessage, 1000);
+
+watch(messages, async () => {
+  if (messages.value?.length < 0) return;
+
+  allMsg.value.push(...messages.value)
+  await nextTick();
+  window.scrollTo(0, document.body.scrollHeight);
+});
+
+onUnmounted(() => clearInterval(getMsgInterval));
 
 </script>
 
@@ -15,23 +31,7 @@ import TheChatForm from './components/TheChatForm.vue';
 
     <q-page-container>
       <q-list padding class="column">
-        <q-item dense class="row">
-          <q-item-section avatar top>
-            Very Long Username
-          </q-item-section>
-          <q-item-section top>
-            Message here
-          </q-item-section>
-        </q-item>
-
-        <q-item dense class="row">
-          <q-item-section avatar top>
-            user1
-          </q-item-section>
-          <q-item-section top>
-            Message here
-          </q-item-section>
-        </q-item>
+        <BaseChatMsg v-for="msg in allMsg" :key="msg.id" :msg="msg" />
       </q-list>
     </q-page-container>
 
