@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
 class ApiUserController extends Controller
 {
 
-  public function online() : JsonResponse
+  public function online(User $modelUser) : JsonResponse
   {
+      $users = $modelUser->getActiveUsersAfterTimestamp(now()->subSeconds(5));
       return response()->json([
-        'status' => 'success',
-        'data' => [
-            'User1',
-            'User2',
-        ]
+          'status' => 'success',
+          'data' => $users,
       ]);
   }
 }

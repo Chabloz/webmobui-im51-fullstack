@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,7 +35,7 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getAllAfterTimestamp($timestamp) : Collection
+    public function getAllAfterTimestamp(Carbon $timestamp) : Collection
     {
         return $this->where('created_at', '>', $timestamp)->with('user:id,name')->get();
     }

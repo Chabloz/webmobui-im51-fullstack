@@ -1,4 +1,5 @@
 <script setup>
+  import { shortFrCH as formatDate } from '../utils/date.js';
   const props = defineProps({
     msg: Object
   });
@@ -7,6 +8,7 @@
 <template>
   <q-item dense>
     <q-item-section avatar top>
+      {{ formatDate(msg.created_at) }}
       {{ msg.user.name }} :
     </q-item-section>
     <q-item-section top>

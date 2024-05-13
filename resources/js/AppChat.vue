@@ -2,7 +2,7 @@
 import { onUnmounted, ref, watch, nextTick } from 'vue';
 
 import { useFetchApi } from './composables/fetchApi.js';
-import TheChatHeader from './components/TheChatHeader.vue';
+import TheChatToolbar from './components/TheChatToolbar.vue';
 import TheChatForm from './components/TheChatForm.vue';
 import BaseChatMsg from './components/BaseChatMsg.vue';
 
@@ -14,7 +14,6 @@ const getMsgInterval = setInterval(getNewMessage, 1000);
 
 watch(messages, async () => {
   if (messages.value?.length < 0) return;
-
   allMsg.value.push(...messages.value)
   await nextTick();
   window.scrollTo(0, document.body.scrollHeight);
@@ -27,7 +26,9 @@ onUnmounted(() => clearInterval(getMsgInterval));
 <template>
   <q-layout view="hHh LpR fFf">
 
-    <TheChatHeader elevated />
+    <q-header elevated>
+      <TheChatToolbar  />
+    </q-header>
 
     <q-page-container>
       <q-list padding class="column">

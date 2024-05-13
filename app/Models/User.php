@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,12 +31,20 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'created_at',
+        'updated_at',
+        'email',
     ];
 
     // hasMany messageas
     public function messages() : HasMany
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function getActiveUsersAfterTimestamp(Carbon $timestamp) : Collection
+    {
+        return $this->where('updated_at', '>', $timestamp)->orderBy('name')->get();
     }
 
 }
