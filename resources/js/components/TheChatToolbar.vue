@@ -6,7 +6,6 @@
   const getUsersInterval = setInterval(getOnlineUsers, 5000);
 
   onUnmounted(() => clearInterval(getUsersInterval));
-
 </script>
 
 <template>
