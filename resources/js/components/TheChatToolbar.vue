@@ -1,9 +1,10 @@
 <script setup>
-  import { onUnmounted, watch } from 'vue';
+  import { onUnmounted } from 'vue';
   import { useFetchApi } from '../composables/fetchApi.js';
 
   const { data: users, fetchData: getOnlineUsers } = useFetchApi('user');
   const getUsersInterval = setInterval(getOnlineUsers, 5000);
+  getOnlineUsers();
 
   onUnmounted(() => clearInterval(getUsersInterval));
 </script>
