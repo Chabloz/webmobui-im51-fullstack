@@ -45,6 +45,4 @@ class ApiMessageController extends Controller
         ]);
     }
 
-
-
 }

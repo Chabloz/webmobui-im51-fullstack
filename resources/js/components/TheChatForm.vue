@@ -21,11 +21,11 @@
       ref="inputMsg"
       filled
       dense
+      maxlength="255"
       v-model.trim="msg"
       label="Message"
-      class="col-11"
+      class="col"
     />
-    <q-btn type="submit" color="primary" flat icon="send" class="col-1" />
   </q-form>
 </template>
 
