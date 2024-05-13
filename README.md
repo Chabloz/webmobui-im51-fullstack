@@ -32,6 +32,8 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+(Ask the teacher for the EDU-ID secret to put in the .env file)
+
 ### Dev
 In two separate terminals:
 
