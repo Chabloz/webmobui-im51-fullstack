@@ -32,7 +32,11 @@ class ApiMessageController extends Controller
 
     public function get(Request $request, Message $message) : JsonResponse
     {
-        $time = $request->session()->get('last_get_at', now());
+        // if no last_get_at in session, set it to now(
+        if (!$request->session()->has('last_get_at')) {
+            $request->session()->put('last_get_at', now());
+        }
+        $time = $request->session()->get('last_get_at');
         $messages = $message->getAllAfterTimestamp($time);
         if (count($messages) > 0) {
             $request->session()->put('last_get_at', $messages->last()->created_at);
