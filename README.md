@@ -5,7 +5,7 @@
 ### Clone (or fork, or download)
 
 ```sh
-git clone https://github.com/Chabloz/a-frame-vite-vue-boilerplate.git .
+git clone https://github.com/Chabloz/webmobui-im51-fullstack.git .
 ```
 
 ### Install dependencies
