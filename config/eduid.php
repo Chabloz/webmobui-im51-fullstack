@@ -2,6 +2,6 @@
 
 return [
 
-    'url' => 'https://chabloz.eu/aai/?dev',
+    'url' => 'https://chabloz.eu/aai/?rec',
     'key' => env('EDUID_KEY'),
 ];

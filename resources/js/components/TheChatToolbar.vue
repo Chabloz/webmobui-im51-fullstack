@@ -3,7 +3,7 @@
   import { useFetchApi } from '../composables/fetchApi.js';
 
   const { data: users, fetchData: getOnlineUsers } = useFetchApi('user');
-  const getUsersInterval = setInterval(getOnlineUsers, 5000);
+  const getUsersInterval = setInterval(getOnlineUsers, 2000);
   getOnlineUsers();
 
   onUnmounted(() => clearInterval(getUsersInterval));
@@ -16,7 +16,7 @@
     </q-toolbar-title>
     <q-btn-dropdown color="secondary" icon="people"  label="Online users" size="sm" class="q-mr-sm">
       <q-list>
-        <q-item v-for="user in users" :key="user.id">
+        <q-item v-for="user in users" :key="user.id" dense>
           <q-item-section>
             <q-item-label>
               {{ user.name }}
