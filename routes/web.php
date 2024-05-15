@@ -12,7 +12,6 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/eduid', [UserController::class, 'eduId']);
 Route::get('/login-eduid', [UserController::class, 'loginEduId']);
 
-// Authenticated routes, with login-form for the login
 Route::middleware(['auth'])->group(function () {
   Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
   Route::get('/logout', [UserController::class, 'logout']);
