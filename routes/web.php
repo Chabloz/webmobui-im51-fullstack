@@ -20,7 +20,6 @@ Route::middleware(['auth'])->group(function () {
 
 /* API ROUTES (example) */
 Route::prefix('api')->middleware(['auth'])->group(function () {
-
   Route::get('/user', [ApiUserController::class, 'online']);
   Route::post('/message', [ApiMessageController::class, 'create']);
   Route::get('/message', [ApiMessageController::class, 'get']);
