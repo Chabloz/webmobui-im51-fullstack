@@ -17,7 +17,6 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/logout', [UserController::class, 'logout']);
 });
 
-
 /* API ROUTES */
 Route::prefix('api')->middleware(['auth'])->group(function () {
   Route::get('/user', [ApiUserController::class, 'online']);
