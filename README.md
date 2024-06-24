@@ -41,7 +41,7 @@ Create a file named `database.sqlite` in the `database` folder and:
 
 ```sh
 php artisan migrate --seed
-``
+```
 
 ### Dev
 In two separate terminals:
