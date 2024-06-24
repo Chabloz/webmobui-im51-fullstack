@@ -34,6 +34,15 @@ php artisan key:generate
 
 (Ask the teacher for the EDU-ID secret to put in the .env file)
 
+
+### Create and seed the database
+
+Create a file named `database.sqlite` in the `database` folder and:
+
+```sh
+php artisan migrate --seed
+``
+
 ### Dev
 In two separate terminals:
 
